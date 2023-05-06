@@ -1,0 +1,41 @@
+[
+    {
+        "_id": 1,
+        "name": "Charlie",
+        "breed": "Corgi",
+        "age": "4 years",
+        "description": "Charlie is a calm, even tempered dog who gets along well with children and other animals.",
+        "image": "http://127.0.0.1:4000/images/image01.jpg"
+    },
+    {
+        "_id": 2,
+        "name": "Rover",
+        "breed": "Dalmatian",
+        "age": "8 months",
+        "description": "Rover is high-strung and full of energy.",
+        "image": "http://127.0.0.1:4000/images/image02.jpg"
+    },{
+        "_id": 3,
+        "name": "Spot",
+        "breed": "German Shepard",
+        "age": "8 years",
+        "description": "Spot is very sweet and loves to cuddle.",
+        "image": "http://127.0.0.1:4000/images/image03.jpg"
+    },
+    {
+        "_id": 4,
+        "name": "Nora",
+        "breed": "Golden Retriever",
+        "age": "3 months",
+        "description": "Nora is an adorable and energetic puppy.",
+        "image": "http://127.0.0.1:4000/images/image04.jpg"
+    },
+    {
+        "_id": 5,
+        "name": "Balto",
+        "breed": "Husky",
+        "age": "5 years",
+        "description": "Balto loves people and the outdoors.",
+        "image": "http://127.0.0.1:4000/images/image05.jpg"
+    }  
+]

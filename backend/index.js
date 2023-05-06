@@ -10,9 +10,9 @@ app.use(cors());
 app.use(express.static("public"));
 app.use("/images", express.static("images"));
 
-mongoose.connect("mongodb://127.0.0.1:27017/reactdata",
+mongoose.connect("mongodb://127.0.0.1:27017/finalproject",
     {
-        dbName: "reactdata",
+        dbName: "finalproject",
         useNewUrlParser: true,
         useUnifiedTopology: true,
     }
@@ -31,29 +31,30 @@ app.get("/", async (req, resp) => {
     resp.send(allProducts);
 });
 
+app.get("/info", async (req, resp) => {
+
+});
+
 app.post("/insert", async (req, res) => {
-    console.log(req.body);
+    console.log("!!! SEE THIS !!!",req.body);
     const p_id = req.body._id;
-    const ptitle = req.body.title;
-    const pprice = req.body.price;
+    const pname = req.body.name;
+    const page = req.body.age;
     const pdescription = req.body.description;
-    const pcategory = req.body.category;
+    const pbreed = req.body.breed;
     const pimage = req.body.image;
-    const prate = req.body.rating.rate;
-    const pcount = req.body.rating.count;
 
     const formData = new Product({
         _id: p_id,
-        title: ptitle,
-        price: pprice,
+        name: pname,
+        age: page,
         description: pdescription,
-        category: pcategory,
+        breed: pbreed,
         image: pimage,
-        rating: { rate: prate, count: pcount },
     });
-
+    console.log("!!! SEE THIS !!!",formData);
     try {
-        // await formData.save();
+        
         await Product.create(formData);
         const messageResponse = { message: `Product ${p_id} added correctly` };
         res.send(JSON.stringify(messageResponse));
@@ -63,11 +64,12 @@ app.post("/insert", async (req, res) => {
 });
 
 
-app.get("/:id", async (req, resp) => {
-    const id = req.params.id;
-    const query = { _id: id };
+app.get("/:breed", async (req, resp) => {
+    console.log("input: ",req.params);
+    console.log("Input Breed: ",req.params.breed);
+    const query = { breed: req.params.breed };
+    console.log("query: ",query);
     const oneProduct = await Product.findOne(query);
-    console.log(oneProduct);
     resp.send(oneProduct);
 });
 
@@ -87,10 +89,10 @@ app.delete("/delete", async (req, res) => {
 
 app.post("/update", async (req, res) => {
     console.log(req.body._id);
-    console.log(req.body.price);
+    console.log(req.body.description);
  try {
         const query = { _id: req.body._id };
-        await Product.updateOne({_id: query},{$set: {price: req.body.price}});
+        await Product.updateOne({_id: query},{$set: {description: req.body.description}});
         const messageResponse = { message: `Product updated correctly` };
         res.send(JSON.stringify(messageResponse));
     } catch (err) {
